@@ -1,27 +1,91 @@
-#container {
-  text-align: center;
+ion-item {
+  border-bottom: 2px solid #f8f7f7;
+  margin-bottom: 15px;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  &.focusclass {
+    border-bottom: 3px solid #21a8d9;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-icon {
+  color: #21a8d9;
+
+  &.changeIconColor {
+    color: #21a8d9;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.ion-padding {
+  padding-top   : 15px;
+  padding-left  : 10px;
+  padding-right : 10px;
+  padding-bottom: 5px;
 }
 
-#container a {
-  text-decoration: none;
+.ion-padding_content {
+  position      : relative;
+  padding-top   : 15px;
+  padding-left  : 5px;
+  padding-right : 5px;
+  padding-bottom: 15px;
+}
+
+hr {
+  background: #9c1212;
+}
+
+.login_card_main {
+  border       : 2px solid rgb(35, 127, 212);
+  border-radius: 10px;
+}
+
+.input-border {
+  border       : 2px solid rgb(32, 94, 169);
+  border-radius: 50px;
+}
+
+.login_btn {
+  border-radius   : 100px;
+  height          : 50px;
+  width           : 50px;
+  background-color: #21a8d9;
+}
+
+.login_button_row {
+  align-items: center;
+  padding-top: 5px;
+}
+
+h6 {
+  color       : #21a8d9;
+  font-size   : 25px;
+  align-items : bottom;
+  padding-left: 10px;
+  font-family : auto;
+  padding-top : 30%;
+}
+
+ion-input {
+  color: black;
+}
+
+.btnfinger {
+  font-size       : 1.2rem;
+  margin-top      : 20px;
+  padding-left    : 10px;
+  padding-right   : 10px;
+  background-color: #21a8d9;
+}
+
+.labeloption{
+  text-align: -webkit-center
+}
+.logoptionrow{
+  text-align: -webkit-center
+}
+.sifnuprow{
+  text-align-last: center;
+  padding-top: 25%;
+  font-size: larger;
+  color: black;
 }

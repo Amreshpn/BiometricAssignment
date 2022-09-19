@@ -1,0 +1,185 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card class="card-border">
+    <form [formGroup]="registrationForm" (ngSubmit)="createNewUser()">
+
+      <ion-list>
+        <ion-card>
+          <ion-item class="input-border">
+            <ion-label position="floating"> First Name * </ion-label>
+            <ion-input type="string" formControlName="userName" required></ion-input>
+            <ion-icon name="person" slot="start"></ion-icon>
+          </ion-item>
+          <ng-container *ngFor="let error of errorMessages.userName">
+            <div
+              *ngIf="registrationForm.get('userName').hasError(error.type) && (registrationForm.get('userName').dirty || registrationForm.get('userName').touched)">
+              <small class="error-message">{{error.message}}</small>
+            </div>
+          </ng-container>
+        </ion-card>
+        <ion-card>
+          <ion-item class="input-border top-margin-20">
+            <ion-label position="floating">Last Name * </ion-label>
+            <ion-input type="string" formControlName="lastName" required></ion-input>
+            <ion-icon name="person" slot="start"></ion-icon>
+          </ion-item>
+          <ng-container *ngFor="let error of errorMessages.userName">
+            <div
+              *ngIf="registrationForm.get('lastName').hasError(error.type) && (registrationForm.get('lastName').dirty || registrationForm.get('lastName').touched)">
+              <small class="error-message">{{error.message}}</small>
+            </div>
+          </ng-container>
+        </ion-card>
+        <!-- <ion-card>
+                  <ion-item class="input-border top-margin-20">
+                      <ion-label position="floating">Date of Birth * </ion-label>
+                      <ion-datetime formControlName="dob" display-format="DD-MM-YYYY" max={{maxTim}} picker-format="DD-MM-YYYY" required></ion-datetime>
+                      <ion-icon name="calendar" slot="start"></ion-icon>
+                  </ion-item>
+                  <ng-container *ngFor="let error of errorMessages.dob">
+                      <div *ngIf="registrationForm.get('dob').hasError(error.type) && (registrationForm.get('dob').dirty || registrationForm.get('dob').touched)">
+                          <small class="error-message">{{error.message}}</small>
+                      </div>
+                  </ng-container>
+              </ion-card> -->
+        <ion-card class="input-border top-margin-20">
+          <ion-row>
+            <ion-col size="3" style="margin: 1rem 0">
+              <ion-label>Gender</ion-label>
+            </ion-col>
+            <ion-col size="4" style="padding-left: 0; padding-right:0">
+              <ion-item style="font-size: 0.9rem;" lines="none">
+                <ion-label class="opacitylabel">Male</ion-label>
+                <ion-checkbox mode="ios" (ionFocus)="changegenderm()" formControlName="genderm"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+            <ion-col size="5" style="padding-left: 0; padding-right:0">
+              <ion-item style="font-size: 0.9rem;" lines="none">
+                <ion-label class="opacitylabel">Female</ion-label>
+                <ion-checkbox mode="ios" (ionFocus)="changegenderf()" formControlName="genderf"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        <ion-card>
+          <ion-item class="input-border top-margin-20">
+            <ion-label position="floating">Phone *</ion-label>
+            <ion-input formControlName="phone" inputmode="tel" required></ion-input>
+            <ion-icon name="call" slot="start"></ion-icon>
+          </ion-item>
+          <ng-container *ngFor="let error of errorMessages.phone">
+            <div
+              *ngIf="registrationForm.get('phone').hasError(error.type) && (registrationForm.get('phone').dirty || registrationForm.get('phone').touched)">
+              <small class="error-message">{{error.message}}</small>
+            </div>
+          </ng-container>
+        </ion-card>
+        <ion-card>
+          <ion-item class="input-border top-margin-20">
+            <ion-label position="floating">EmailID *</ion-label>
+            <ion-input formControlName="emailID" inputmode="email" required></ion-input>
+            <ion-icon name="send" slot="start"></ion-icon>
+          </ion-item>
+          <ng-container *ngFor="let error of errorMessages.emailID">
+            <div
+              *ngIf="registrationForm.get('emailID').hasError(error.type) && (registrationForm.get('emailID').dirty || registrationForm.get('emailID').touched)">
+              <small class="error-message">{{error.message}}</small>
+            </div>
+          </ng-container>
+        </ion-card>
+        <ion-card>
+          <ion-item class="input-border top-margin-20">
+
+            <!-- <ion-label *ngIf="(!(selectedAddress === undefined || selectedAddress === ''))" class="selectedlocation-area"> {{selectedAddress}}</ion-label> -->
+            <ion-input type="string" placeholder="Address *" formControlName="loginusername" required></ion-input>
+            <ion-icon slot="start" name="location-sharp" (click)="selectLocationfromMap()"></ion-icon>
+          </ion-item>
+          <ng-container *ngFor="let error of errorMessages.loginusername">
+            <div
+              *ngIf="registrationForm.get('loginusername').hasError(error.type) && (registrationForm.get('loginusername').dirty || registrationForm.get('loginusername').touched)">
+              <small class="error-message">{{error.message}}</small>
+            </div>
+          </ng-container>
+        </ion-card>
+
+
+        <ion-card>
+          <ion-item class="input-border top-margin-20">
+            <ion-label position="floating">Password *</ion-label>
+            <ion-input clearOnEdit=false type={{newInputType}} formControlName="newPass"></ion-input>
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+            <ion-icon *ngIf="registrationForm.get('newPass').value.length!=0" name={{newIconType}} slot="end"
+              (click)="toggleNew()"></ion-icon>
+          </ion-item>
+          <ng-container *ngFor="let error of errorMessages.newPass">
+            <div
+              *ngIf="registrationForm.get('newPass').hasError(error.type) && (registrationForm.get('newPass').dirty || registrationForm.get('newPass').touched)">
+              <small class="error-message">{{error.message}}</small>
+            </div>
+          </ng-container>
+        </ion-card>
+
+        <ion-card>
+          <ion-item class="input-border top-margin-20">
+            <ion-label position="floating">Re-enter password *</ion-label>
+            <ion-input clearOnEdit=false type={{renewInputType}} formControlName="renewPass"></ion-input>
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+            <ion-icon *ngIf="registrationForm.get('renewPass').value.length!=0" name={{renewIconType}} slot="end"
+              (click)="toggleRenew()"></ion-icon>
+          </ion-item>
+          <ng-container *ngFor="let error of errorMessages.renewPass">
+            <div
+              *ngIf="registrationForm.get('renewPass').hasError(error.type) && !registrationForm.get('newPass').hasError('required') && (registrationForm.get('renewPass').dirty || registrationForm.get('renewPass').touched)">
+              <small class="error-message">{{error.message}}</small>
+            </div>
+          </ng-container>
+          <ng-container
+            *ngIf="!registrationForm.get('renewPass').errors && registrationForm.hasError(errorMessages.form[0].type) && (registrationForm.get('renewPass').dirty || registrationForm.get('renewPass').touched)">
+            <small class="error-message">{{errorMessages.form[0].message}}</small>
+          </ng-container>
+
+          <ion-row>
+            <ion-col>
+              Upload profile image throue the camera or gallery
+            </ion-col>
+          </ion-row>
+          <ion-row style="justify-content: center; margin-top: 20px; text-align-last: center;">
+            <ion-col size=6>
+              <ion-button (click)="captureImage()">Camera</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button (click)="pickImage()">Gallery</ion-button>
+            </ion-col>
+            <div style="flex-wrap: wrap;float: left" *ngFor="let photo of cameraData; let id = index">
+              <ion-card>
+                <ion-icon (click)="deletePhoto(id)" name="trash-outline"></ion-icon>
+                <img [src]="photo" style="width: 130px; height: 130px;" />
+                <br>
+              </ion-card>
+            </div>
+          </ion-row>
+
+          <ion-button expand="block" type="submit" class="top-margin-20" [disabled]="!registrationForm.valid">Submit
+          </ion-button>
+        </ion-card>
+      </ion-list>
+    </form>
+
+
+   
+
+    <ion-row class="sifnuprow" (click)="signin()">
+      <ion-col>
+        Already have an account? <span style="color: #21a8d9; font-weight: bolder ;">Sign in</span>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

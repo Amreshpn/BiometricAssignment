@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card style="text-align: -webkit-center;">
+    <img style="border-radius: 100px;"  class="profile_avatar" width="150" height="150"
+      src="{{logo}}" onError="this.src='assets/blankuser.jpg';" alt="..." /><br>
+    <ion-label class="iollablecontent ">Patient Name : <span>{{patientName}} {{lastName}}</span></ion-label><br>
+    <ion-label class="iollablecontent ">Phone Number :<span> {{mobnumber}}</span></ion-label><br>
+    <ion-label class="iollablecontent ">email : <span>{{emailID}}</span></ion-label><br>
+    <ion-label class="iollablecontent ">Gender : <span>{{gender == 0 ? 'Male' : 'Female'}}</span></ion-label><br>
+    <ion-label class="iollablecontent ">Address : <span>{{address}} </span></ion-label><br>
+  </ion-card>
+  <!-- <ion-button (click)="logout()">
+    Logout
+  </ion-button> -->
+  <ion-row style="padding: 30px;">
+    <ion-col size="12" (click)="logout()">
+        <ion-card style="border-radius: 50px; height: 50px; width: 50px; text-align: center; padding: 10px; float: right;">
+            <ion-icon style="font-size: xx-large; text-align: center; color: #21a8d9;" name="log-out-outline"></ion-icon>
+        </ion-card>
+        <h6 style="text-align:center;float: right; padding: 10px;"> Logout </h6>
+    </ion-col>
+</ion-row>
+
+
+<p style="padding: 10px;">
+  Hi i know this is not a good ui i could have made it better but i could not devote my time as i have a lot of work.
+<br>
+  If it's ok for you then give me feedback otherwise no problem.
+  <br><br>
+  Thank you
+</p>
+</ion-content>

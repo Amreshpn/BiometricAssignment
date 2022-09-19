@@ -1,0 +1,80 @@
+.error-message {
+    color: var(--ion-color-danger);
+}
+
+.ion-padding {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    background-color: #21a8d9;
+}
+
+.input-border {
+    border: 2px solid #21a8d9;
+    border-radius: 50px;
+}
+
+.card-border {
+    border: 2px solid #21a8d9;
+    border-radius: 10px;
+}
+
+.ioncol {
+    border: 2px solid #21a8d9;
+    border-radius: 50px;
+    text-align: center;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+}
+
+.cioncol {
+    border: 2px solid #21a8d9;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.eioncol {
+    border: 2px solid #21a8d9;
+    border-radius: 50px;
+    text-align: center;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+}
+
+.top-margin-5 {
+    margin-top: 5px;
+    border-radius: 15px;
+}
+
+.top-margin-20 {
+    margin-top: 20px;
+}
+
+ion-icon {
+    font-size: 1.4rem;
+    color: #898989;
+}
+
+ion-checkbox {
+    opacity: 1 !important;
+    margin-right: 0;
+}
+
+.opacitylabel {
+    opacity: 1 !important;
+}
+
+.hrefinapp {
+    height: min-content;
+    margin: 0 auto;
+    font-size: 0.8rem;
+}
+.sifnuprow{
+    text-align-last: center;
+    padding-top: 25%;
+    font-size: larger;
+    color: black;
+  }
